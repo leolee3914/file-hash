@@ -24,8 +24,8 @@
 	
 	const hashAlgo = process.argv[2];
 	
-	if ( typeof hashAlgo !== 'string' ) {
-		throw new Error('Unknown algorithm');
+	if ( !crypto.getHashes().includes(hashAlgo) ) {
+		throw new Error('Unsupported hash algorithm');
 	}
 	
 	const argvPathList = process.argv.slice(3);
