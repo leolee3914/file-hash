@@ -29,6 +29,9 @@
 	}
 	
 	const argvPathList = process.argv.slice(3);
+
+	var folderCount = 0;
+	var fileCount = 0;
 	
 	if ( argvPathList.length > 0 ) {
 		argvPathList.forEach(function (path) {
@@ -39,16 +42,21 @@
 	}
 	
 	const endTime = performance.now();
-	console.log(`Time: ${Math.round(endTime - startTime) / 1000}s\n\n`);
+	console.log(`Folders: ${folderCount}, Files: ${fileCount}`);
+	console.log(`Time: ${Math.round(endTime - startTime) / 1000}s [JavaScript]\n\n`);
 	
 	function printHash ( path ) {
 		let pathStat = fs.statSync(path);
 	
 		if ( pathStat.isDirectory() ) {
+			++folderCount;
+
 			fs.readdirSync(path).forEach(function (fileName) {
 				printHash(path + '/' + fileName);
 			});
 		} else if ( pathStat.isFile() ) {
+			++fileCount;
+
 			let file = fs.openSync(path, 'r');
 			let hashCtx = crypto.createHash(hashAlgo);
 			let buffer = Buffer.allocUnsafe(MAX_BUFFER_LENGTH);
