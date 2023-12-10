@@ -4,6 +4,7 @@
 Calculate file hash for Windows using JavaScript/PHP/Python (supports drag and drop)
 
 ## Requirements
+- Windows 10 or 11
 - Node.js >= v18.17.1
 - PHP (CLI) >= 8.1.0
 - Python >= 3.11.2
