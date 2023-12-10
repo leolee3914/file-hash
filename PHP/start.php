@@ -11,6 +11,8 @@
 
 declare(strict_types=1);
 
+namespace {
+
 	set_time_limit(-1);
 
 	const MAX_BUFFER_LENGTH = 1024 * 1024 * 5;
@@ -62,3 +64,5 @@ declare(strict_types=1);
 			echo 'File: ' . realpath($path) . "\n" . HASH_ALGO . ': ' . $hash . "\n\n";
 		}
 	}
+
+}
